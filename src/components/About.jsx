@@ -8,12 +8,12 @@ export default function About() {
     "Photography",
     "Drinking coffee"
   ]
-  const button ="mt-8 px-6 py-3 border-2 border-[#D4AF37] text-[#D4AF37] font-bold text-sm md:text-lg transition-all hover:scale-105 hover:shadow-lg cursor-pointer";
+  const button ="mt-8 px-6 py-3 border-2 rounded-md border-[#D4AF37] text-[#D4AF37] font-bold text-sm md:text-lg transition-all hover:scale-105 hover:shadow-lg cursor-pointer";
   return (
-    <section className=" bg-[#0a1f44] mx-auto w-full min-h-screen p-4 md:p-8 lg:p-28 flex items-center justify-center">
+    <section className="mx-auto w-full min-h-screen p-4 md:p-8 lg:p-28 flex items-center justify-center">
      <div className="w-full max-w-3xl text-center">
-       <h2 className="text-4xl font-bold text-[#D4AF37] mb-5 ">About Me</h2>
-      <p className="text-white  text-base sm:text-lg  md:text-xl leading-relaxed ">I am a passionate frontend developer who enjoys learning React, English, and German every day. I love building creative web projects and continuously improving my skills. My goal is to become a full-stack developer and create useful applications that help people</p>
+       <h2 className="text-4xl font-bold dark:text-[#D4AF37] mb-5 ">About Me</h2>
+      <p className="dark:text-white  text-base sm:text-lg  md:text-xl leading-relaxed ">I am a passionate frontend developer who enjoys learning React, English, and German every day. I love building creative web projects and continuously improving my skills. My goal is to become a full-stack developer and create useful applications that help people</p>
 
   <div>
         <button onClick={()=>setShowMore(prev =>!prev)}  className={button}>{showMore ? "Show Less":"Show More"}</button>

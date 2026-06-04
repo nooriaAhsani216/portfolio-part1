@@ -3,8 +3,8 @@ import { MdEmail } from "react-icons/md";
 export default function Footer() {
    
   return (
-    <footer className="w-full border-t border-[#D4AF37] p-6 text-center bg-[#1a2f4a]">
-      <ul className="flex gap-3 items-center justify-center mt-5 text-[#D4AF37] cursor-pointer">
+    <footer className="w-full border-t border-[#D4AF37] p-6 text-center ">
+      <ul className="flex gap-3 items-center justify-center mt-5 dark:text-[#D4AF37] cursor-pointer">
                 <li><FaLinkedinIn size={30}/></li>
                 <li><FaGithub size={30}/></li>
                 <li><MdEmail size={30} /></li>

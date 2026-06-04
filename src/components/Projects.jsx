@@ -2,6 +2,7 @@ import ProjectCards from "./ProjectCards";
 import cinemaImg from "../assets/images/pamir-cinema.png"
 import larkhaodImg from "../assets/images/larkoad.png"
 import invoiceImg from "../assets/images/invoiceFlow.png"
+import { useState } from "react";
 
 
 export default function Projects() {
@@ -31,8 +32,15 @@ export default function Projects() {
         featured:true
     }
   ]
+  // const [filter,setFilter] = useState("All");
+  // const filters = ["HTML","CSS","JavaScript","React"]
   return (
-    <section className=" bg-[#0a1f44] p-10">
+    <section className="p-10">
+      {/* <div>
+        {filters.map((item)=>(
+          {item}
+        ))}
+      </div> */}
  <h2 className="text-white text-4xl text-center mb-5">Projects</h2>
     <div className="flex flex-wrap gap-4 justify-center">
         {PROJECTS.map((project, i) => {

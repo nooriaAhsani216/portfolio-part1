@@ -1,1 +1,9 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+body {
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+button, input, textarea, a, div {
+  transition: all 200ms ease-in-out;
+}
