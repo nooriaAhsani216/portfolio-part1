@@ -8,11 +8,13 @@ export default function FeedBack() {
   })
     const stars = [1, 2, 3, 4, 5];
     const [feedback,setFeedBack] = useState([ {
+      id:1,
     name: "Ahmad",
     rating: 5,
     comment: "Amazing experience!"
   },
   {
+    id:2,
     name: "Sara",
     rating: 4,
     comment: "Very good, I liked it."
@@ -36,7 +38,10 @@ export default function FeedBack() {
      e.preventDefault();
      setFeedBack(prev=>[
       ...prev,
-      formData
+    {
+  ...formData,
+  id: Date.now()
+}
     ] )
       setFormData({
     name: "",
@@ -53,7 +58,7 @@ export default function FeedBack() {
     </h2>
 
     <div className="flex flex-col gap-4">
- <form action="" onSubmit={handleSubmit}>
+ <form  onSubmit={handleSubmit}>
        <input
         type="text"
           name="name"
@@ -65,7 +70,8 @@ export default function FeedBack() {
       <div className="flex gap-1 text-3xl">
      {stars.map((star)=>{
       return(
-        <button 
+        <button
+        key={star} 
         type="button"
         onClick={()=>handleClick(star)}
         >  {star <= formData.rating ? (
@@ -90,9 +96,9 @@ export default function FeedBack() {
   </div>
 <div className="space-y-4 mt-6">
 
-  {feedback.map((item, index) => (
+  {feedback.map((item) => (
     <div
-      key={index}
+      key={item.id}
       className="bg-white/10 border border-white/20 p-4 rounded-xl"
     >
 
