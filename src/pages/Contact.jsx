@@ -89,7 +89,7 @@ useEffect(() => {
 
   }
   return (
-    <section className="min-h-screen flex  items-center justify-center px-6">
+    <section className="min-h-screen flex  items-center justify-center p-6">
       {/* <h3 className="text-3xl font-bold text-center text-white mb-2">Get in touch</h3> */}
 
       <div className="w-full max-w-3xl bg-white/10 backdrop-blur-md  shadow-xl rounded-2xl p-8">
