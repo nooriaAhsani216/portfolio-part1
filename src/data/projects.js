@@ -1,6 +1,7 @@
   import cinemaImg from "../assets/images/pamir-cinema.png"
 import larkhaodImg from "../assets/images/larkoad.png"
 import invoiceImg from "../assets/images/invoiceFlow.png"
+import pollyglotImg from "../assets/images/pollyglot.png"
   const PROJECTS = [
     {
       id:1,
@@ -12,6 +13,7 @@ import invoiceImg from "../assets/images/invoiceFlow.png"
       featured: false,
        progress:95,
         github:"#",
+        liveDemo:"#",
         status: "Completed"
     },
     {id:2,
@@ -23,6 +25,7 @@ import invoiceImg from "../assets/images/invoiceFlow.png"
       featured: true,
       progress:90,
       github:"#",
+       liveDemo:"#",
       status: "Completed",
     },
     {id:3,
@@ -34,7 +37,20 @@ import invoiceImg from "../assets/images/invoiceFlow.png"
       featured: true,
        progress:80,
         github:"#",
-        status: "in progress",
+         liveDemo:"#",
+        status: "in progress"
+    },
+      {id:4,
+      name: "Pollyglot App",
+      img: pollyglotImg,
+      description: "An AI modern translator ",
+      link: "#",
+      techStack: ["React", "Tailwindcss"],
+      featured: true,
+       progress:70,
+       github:"#",
+       liveDemo:"#",
+       status: "in progress"
     }
   ]
   export default PROJECTS;

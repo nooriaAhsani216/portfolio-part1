@@ -1,16 +1,23 @@
+
 import Header from "../components/Header"
 import Profile from "../components/Profile"
-import FeedBack from "../components/FeedBack"
-import profileImg from '../assets/images/coding.jfif'
-
-
-
+import About from "./About"
+import Projects from "./Projects"
+import Feedback from "./Feedback"
+import Contact from "./Contact"
+import DeveloperStatus from "../components/DeveloperStatus"
 export default function Home() {
   return (
-    <div>
-      <Header name="I am Nooria"  />
-            <Profile/>
-            <FeedBack />
-    </div>
+     <section>
+     <div className="max-w-7xl  mx-auto flex items-center justify-center gap-12 mt-12 lg:flex">
+       <Header/>
+       <Profile/>
+     </div>
+     <About/>
+     <Projects/>
+     <Contact/>
+      <Feedback/>
+     <DeveloperStatus/>
+    </section>
   )
 }

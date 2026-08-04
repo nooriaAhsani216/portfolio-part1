@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { FiCheckCircle } from "react-icons/fi";
+import { FaPaperPlane } from "react-icons/fa"
 export default function Contact() {
-  const inputStyle = "w-full border rounded-md border-[#D4AF37]  p-3 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]"
+  
+  const inputStyle = "w-full px-4 py-3 border-b text-white border-primary rounded-xl  focus:outline-none transition-all "
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -21,28 +24,28 @@ export default function Contact() {
     console.log("Saved:", formData);
   }, [formData])
 
-useEffect(() => {
-  if (!formData.email) {
-    setErrors(prev => ({ ...prev, email: "" }));
-    return;
-  }
-
-  const timer = setTimeout(() => {
-    if (!formData.email.includes("@")) {
-      setErrors(prev => ({
-        ...prev,
-        email: "Email must contain @"
-      }));
-    } else {
-      setErrors(prev => ({
-        ...prev,
-        email: ""
-      }));
+  useEffect(() => {
+    if (!formData.email) {
+      setErrors(prev => ({ ...prev, email: "" }));
+      return;
     }
-  }, 400);
 
-  return () => clearTimeout(timer);
-}, [formData.email]);
+    const timer = setTimeout(() => {
+      if (!formData.email.includes("@")) {
+        setErrors(prev => ({
+          ...prev,
+          email: "Email must contain @"
+        }));
+      } else {
+        setErrors(prev => ({
+          ...prev,
+          email: ""
+        }));
+      }
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [formData.email]);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -89,69 +92,84 @@ useEffect(() => {
 
   }
   return (
-    <section className="min-h-screen flex  items-center justify-center p-6">
-      {/* <h3 className="text-3xl font-bold text-center text-white mb-2">Get in touch</h3> */}
+    <section className="max-w-6xl mx-auto py-10 px-6">
+      <h3 className="text-2xl text-center text-foreground mb-5">Get in <span className="text-primary italic"> touch</span></h3>
+      <div className="grid lg:grid-cols-2 gap-5">
+        <div
+          className="w-full max-w-3xl bg-card  shadow-xl rounded-3xl border border-primary/30 p-8">
+          <form onSubmit={handleSubmit} className="flex flex-col  gap-4">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your name..."
+              value={formData.name}
+              onChange={handleChange}
+              className={inputStyle}
+            />
+            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+            <input
+              type="email"
+              name="email"
+              placeholder="Your@email.com"
+              value={formData.email}
+              onChange={handleChange}
+              className={inputStyle}
+            />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+            <textarea
+              name="message"
+              placeholder="Your message..."
+              rows={3}
+              value={formData.message}
+              onChange={handleChange}
+              className="w-full  px-4 py-3 text-white border-b border-primary rounded-xl  focus:outline-none transition-all resize-none"
+            />
+            {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
+            <button 
+            type="submit"
+            className="w-full bg-primary px-4 py-2 rounded-full text-white flex items-center justify-center gap-2 hover:bg-primary/30 transition-all duration-500 ease-in-out cursor-pointer">
+              <FaPaperPlane />
+              Send Message
+            </button>
+          </form>
+          {success && (
+            <div
+              className="mt-5 flex items-center gap-3 text-success animate-pulse" >
 
-      <div className="w-full max-w-3xl bg-white/10 backdrop-blur-md  shadow-xl rounded-2xl p-8">
-      <h2 className="text-3xl font-bold text-center mb-6">Contact Me</h2>
-        <form onSubmit={handleSubmit} className="flex flex-col  gap-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            className={inputStyle}
+              <div className="text-xl">
+                <FiCheckCircle />
+              </div>
 
-          />
-          {errors.name && <p  className="text-red-500 text-sm">{errors.name}</p>}
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
-            className={inputStyle}
-          />
-          {errors.email && <p  className="text-red-500 text-sm">{errors.email}</p>}
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={handleChange}
-            className={inputStyle}
-          />
-          {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
-          <button className=" text-[#D4AF37] rounded-md border p-2 hover:bg-[#D4AF37] hover:text-white cursor-pointer">Send</button>
-        </form>
-        {success ? (
-          <div className=" w-1/2 mt-4 bg-white text-black px-4 py-2 rounded shadow-lg animate-bounce text-end">
-            Message sent successfully 🎉
-          </div>
-        ) : ""}
-        {hasSavedData && (
-          <p className="text-yellow-300 mb-4">
-            You have unsent message data saved!
-          </p>
-        )}
-        <div className="mt-6 p-6 rounded-2xl bg-white/5 border border-white/10 text-white shadow-xl">
-          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+              <p className="text-sm font-medium">
+                Message sent successfully
+              </p>
+
+            </div>
+          )}
+          {hasSavedData && (
+            <p className="text-muted mb-4">
+              You have unsent message data saved!
+            </p>
+          )}
+
+        </div>
+        <div className="mt-6 p-6 rounded-2xl bg-card text-white shadow-xl">
+          <h3 className="text-base font-bold mb-4 flex items-center gap-2">
             👀 Live Preview <span className="animate-bounce">⚡</span>
           </h3>
 
-          <p className="mb-2">
-            👤 <span className="font-semibold">
+          <p className="mb-5 p-2 border-b border-primary rounded-xl">
+            👤 <span className="">
               {formData.name || "No name yet"}
             </span>
           </p>
-
-          <p className="mb-2">
+          <p className="mb-5 p-2 border-b border-primary rounded-xl">
             📧 <span >
               {formData.email || "No email yet"}
             </span>
           </p>
 
-          <p>
+          <p className="p-2 border-b border-primary rounded-xl">
             💬 <span>
               {formData.message || "Start typing your message..."}
             </span>

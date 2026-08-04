@@ -1,60 +1,75 @@
-import { useParams } from "react-router-dom"
+import {useParams } from "react-router-dom";
 import PROJECTS from "../data/projects";
-import Button from "../components/Button";
-
+import { FaGithub } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
+import TechBadge from "../components/TechBadge";
 
 export default function ProjectDetails() {
-    const {id} = useParams();
-    const project = PROJECTS.find((p)=> p.id === Number(id));
-    if (!project) {
-  return <p>Project not found</p>;
-}
-  return (
-   <div className="p-10 text-white max-w-4xl mx-auto">
-   <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8">
-       <div>
- <img
-        src={project.img}
-        className="w-[300px] h-[400px] object-cover rounded-xl"
-      />
-      </div>
-  <div className="space-y-4">
-         <h1 className="text-3xl font-bold">
-        {project.name}
-      </h1>
-             <div className="mt-4">
-        <span className="px-3 py-1 bg-green-500 rounded">
-          {project.status}
-        </span>
-      </div>
-        <p className="text-gray-300">
-        {project.description}
+  const { id } = useParams();
+
+  const project = PROJECTS.find(
+    (p) => p.id === Number(id)
+  );
+  if (!project) {
+    return (
+      <p className="text-center py-10">
+        Project not found
       </p>
-  <div className="flex gap-3">
-       <Button>GitHub</Button>
-       <Button>Demo Link</Button>
-      </div>
-  </div>
-     
-    </div>
-         
-           
-    
-       
-      {/* <div className="mt-5">
-        <h3 className="font-bold mb-2">Tech Stack:</h3>
-        <div className="flex gap-3 flex-wrap">
-          {project.techStack.map((tech, i) => (
-            <span
-              key={i}
-              className="px-2 py-1 bg-white/10 rounded"
-            >
-              {tech}
+    );
+  }
+
+  return (
+    <section className="max-w-2xl mx-auto px-6 py-16">
+      <div className="flex flex-col gap-12 rounded-3xl border border-white/10 bg-card backdrop-blur-md shadow-xl p-5">
+        <img src={project.img} alt={project.name} className="w-full rounded-xl object-cover" />
+        <div className="space-y-6 text-left">
+          <div className="space-y-3">
+            <h1 className="text-4xl font-bold text-white">{project.name}</h1>
+            <span className="inline-block px-3 py-1 rounded-full text-sm bg-primary/10 text-primary border border-primary/30">
+              {project.status}
             </span>
-          ))}
+          </div>
+          <p className="text-gray-600 dark:text-gray-300 leading-7">
+            {project.description}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {project.techStack?.map((tech) => (
+              <TechBadge key={tech} Text={tech} />
+            ))}
+          </div>
+              <div className="flex gap-4 mb-4">
+            <a
+              href="#"
+              rel="noopener noreferrer"
+              className="bg-primary text-white flex items-center gap-2 px-5 py-3 rounded-full"
+            >
+              <FaGithub />
+              View Code
+            </a>
+            <a
+              href="#"
+              rel="noopener noreferrer"
+              className="border border-primary text-white flex items-center gap-2 px-5 py-3 rounded-full"
+            >
+              <FiExternalLink />
+              Live Demo
+            </a>
+          </div>
+          <div className="space-y-2">
+            <div className="flex justify-between">
+              <span className="text-sm">
+                Progress
+              </span>
+              <span className="text-primary">
+                {project.progress}%
+              </span>
+            </div>
+            <div className="h-2 rounded-full bg-white/10 mb-2">
+              <div role="progressbar" aria-valuenow={project.progress} aria-valuemin="0" aria-valuemax="100" className="h-full rounded-full bg-primary transition-all duration-700" style={{ width: `${project.progress}%` }} />
+            </div>
+          </div>
         </div>
-      </div> */}
-      
-    </div>
-  )
+      </div>
+    </section>
+  );
 }

@@ -8,6 +8,8 @@ import NotFound from './pages/NotFound'
 import ProjectDetails from './pages/ProjectDetails'
 import Layout from './layout/Layout'
 import UserProvider from './context/UserProvider'
+import Feedback from './pages/Feedback'
+
 
 
 function App() {
@@ -19,14 +21,12 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/projects' element={<Projects />} />
         <Route path='/projects/:id' element={<ProjectDetails />} />
+        <Route path='/feedback' element={<Feedback/>}/>
         <Route path='/contact' element={<Contact />} />
+         <Route path='*' element={<NotFound />} />
       </Route>
-      <Route path='*' element={<NotFound />} />
-
     </Routes>
     </UserProvider>
-
-
   )
 }
 

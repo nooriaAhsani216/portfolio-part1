@@ -1,19 +1,19 @@
-import { useContext } from "react"
-import { UserContext } from "../context/ThemeContext"
+import { useContext } from "react";
+import { UserContext } from "../context/ThemeContext";
 
 export default function Profile() {
-    const user = useContext(UserContext)
+  const user = useContext(UserContext);
 
-    return (
-        <div className="p-10">
-            <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 p-8 md:p-10 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-6 hover:scale-[1.02] transition-all duration-300">
-                <img src={user.photo} alt="profile"
-                    className="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover  shadow-md" />
-                <div className="text-center md:text-left text-white">
-                    <h3 className="text-2xl md:text-3xl font-bold">{user.title}</h3>
-                    <p className="mt-3 text-sm md:text-base text-gray-200 leading-relaxed">{user.bio}</p>
-                </div>
-            </div>
-        </div>
-    )
+  return (
+    <section className="hidden lg:block">
+        <img
+          src={user.photo}
+          alt="Profile"
+          className="mx-auto h-70 w-70 rounded-full  object-cover shadow-lg"
+        />
+        <p className="mt-3 leading-7 text-center text-slate-700 font-semibold italic">
+          {user.bio}
+        </p>
+    </section>
+  );
 }

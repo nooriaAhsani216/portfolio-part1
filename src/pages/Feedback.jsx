@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import FeedbackCard from "./FeedbackCard";
-export default function FeedBack() {
-  const Input = "w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-1 focus:ring-yellow-400"
+import FeedbackCard from "../components/FeedbackCard";
+export default function Feedback() {
+  const Input = "w-full px-4 py-5 text-white placeholder-gray-300 focus:outline-none border-b border-primary"
   const [formData, setFormData] = useState({
     name: "",
     rating: 0,
@@ -60,13 +60,14 @@ export default function FeedBack() {
 
   }
   return (
-    <section className="container mx-auto p-8 w-full max-w-3xl">
-      <div className=" bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl rounded-2xl p-6 text-white" >
-        <h2 className="text-2xl font-bold text-center mb-6">
+    <section className="container  max-w-3xl mx-auto p-8 ">
+    <div className="space-y-8">
+          <div className="bg-card shadow-2xl rounded-2xl p-6 text-white" >
+        <h2 className="text-2xl text-center mb-6">
           We Love hear from you
         </h2>
 
-        <div className="flex flex-col gap-4">
+        <div>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
@@ -76,7 +77,7 @@ export default function FeedBack() {
               onChange={handleChange}
               className={Input}
             />
-            <div className="flex gap-1 text-3xl">
+            <div className="flex gap-1 text-3xl ">
               {stars.map((star) => {
                 return (
                   <button
@@ -92,18 +93,18 @@ export default function FeedBack() {
             <textarea
               name="comment"
               placeholder="Share your feedback..."
-              rows="5"
+              rows="3"
               value={formData.comment}
               onChange={handleChange}
               className={Input}
             />
-            <button className="w-full bg-yellow-400 text-black font-semibold py-3 rounded-lg  transition-all duration-200 active:scale-95">
+            <button className="w-full bg-primary text-black font-semibold py-3 rounded-lg  transition-all duration-200 active:scale-95">
               Submit Feedback
             </button>
           </form>
         </div>
       </div>
-      <div className="space-y-4 mt-6">
+      <div className="space-y-4 ">
 
         {feedback.map((item) => (
           <FeedbackCard
@@ -114,6 +115,7 @@ export default function FeedBack() {
         ))}
 
       </div>
+    </div>
     </section>
   )
 }
